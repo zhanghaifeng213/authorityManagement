@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+	<form class="layui-form">
+		<div class="layui-form-item">
+			<label class="layui-form-label">角色名称</label>
+			<div class="layui-input-block">
+				<input type="text" name="roleName" placeholder="角色名称"
+					autocomplete="off" class="layui-input" lay-verify="required" maxlength="50">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">备注</label>
+			<div class="layui-input-block">
+				<input type="text" name="remark" placeholder="备注"
+					   autocomplete="off" class="layui-input" maxlength="200">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">资源</label>
+			<div class="layui-input-block">
+				<div id="resource"></div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="addSubmit">立即提交</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

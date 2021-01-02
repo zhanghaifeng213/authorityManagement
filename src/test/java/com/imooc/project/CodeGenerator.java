@@ -126,7 +126,10 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        // strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
+        if(scanner("是否继承基类").equalsIgnoreCase("y")){
+            strategy.setSuperEntityClass("com.imooc.project.entity.BaseEntity");
+            strategy.setSuperEntityColumns("create_time","modified_time","create_account_id","modified_account_id","deleted");
+        }
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(false);
         // 公共父类

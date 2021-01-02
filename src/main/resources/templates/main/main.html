@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>MP小项目</title>
+<link rel="stylesheet" th:href="@{/webjars/layui/css/layui.css}">
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<div class="layui-header">
+			<div class="layui-logo">MP小项目</div>
+			<ul class="layui-nav layui-layout-right">
+				<li class="layui-nav-item"><a href="javascript:;">
+					<span th:text="${session.account.realName}"></span>
+				</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="">基本资料</a>
+						</dd>
+						<dd>
+							<a href="">安全设置</a>
+						</dd>
+					</dl></li>
+				<li class="layui-nav-item"><a th:href='@{/auth/logout}'>退了</a></li>
+			</ul>
+		</div>
+
+		<div class="layui-side layui-bg-black">
+			<div class="layui-side-scroll">
+			 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+				  <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+					<li class="layui-nav-item layui-nav-itemed" th:each="resource:${resources}">
+					  <a class="" href="javascript:;" th:text="${resource.resourceName}">所有商品</a>
+					  <dl class="layui-nav-child" th:if="${resource.subs} ne null" th:each="sub:${resource.subs}">
+						<dd><a th:href="'javascript:showTab(\''+${sub.url}+'\',\''+${sub.resourceName}+'\','+${sub.resourceId}+ ');'"
+							   th:text="${sub.resourceName}"></a></dd>
+					  </dl>
+					</li>
+<!--					<li class="layui-nav-item">-->
+<!--					  <a href="javascript:;">解决方案</a>-->
+<!--					  <dl class="layui-nav-child">-->
+<!--						<dd><a href="javascript:;">列表一</a></dd>-->
+<!--						<dd><a href="javascript:;">列表二</a></dd>-->
+<!--						<dd><a href="">超链接</a></dd>-->
+<!--					  </dl>-->
+<!--					</li>-->
+<!--					<li class="layui-nav-item"><a href="">云市场</a></li>-->
+<!--					<li class="layui-nav-item"><a href="">发布商品</a></li>-->
+				  </ul>
+			</div>
+		</div>
+
+		<div class="layui-body">
+			<!-- 内容主体区域 -->
+			<div class="layui-tab" lay-filter="menu" lay-allowClose="true">
+				<ul class="layui-tab-title">
+					<li class="layui-this">欢迎页</li>
+				</ul>
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show">欢迎使用本系统</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="layui-footer">
+			<!-- 底部固定区域 -->
+			© laoyuan - 底部固定区域
+		</div>
+	</div>
+	<script th:src="@{/webjars/layui/layui.all.js}"></script>
+	<script th:src="@{/webjars/jquery/jquery.js}"></script>
+	<script th:src="@{/js/login/main.js}"></script>
+</body>
+</html>

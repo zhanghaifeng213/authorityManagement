@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+	<form class="layui-form" id="updateForm">
+		<div class="layui-form-item">
+			<label class="layui-form-label">真实姓名</label>
+			<div class="layui-input-block">
+				<input type="hidden" name="customerId">
+				<input type="text" name="realName" placeholder="请输入姓名"
+					   autocomplete="off" class="layui-input" lay-verify="required" maxlength="50">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">性别</label>
+			<div class="layui-input-block">
+				<input type="radio" name="sex" value="男" title="男"> <input
+					type="radio" name="sex" value="女" title="女">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">年龄</label>
+			<div class="layui-input-block">
+				<input type="text" name="age" placeholder="请输入年龄" autocomplete="off"
+					   class="layui-input" lay-verify="number" maxlength="3">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">邮箱</label>
+			<div class="layui-input-block">
+				<input type="text" name="email" placeholder="请输入邮箱"
+					   autocomplete="off" class="layui-input" lay-verify="email" maxlength="100">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">手机号码</label>
+			<div class="layui-input-block">
+				<input type="text" name="phone" placeholder="手机号码"
+					   autocomplete="off" class="layui-input" lay-verify="phone" maxlength="11">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">地址</label>
+			<div class="layui-input-block">
+				<input type="text" name="address" placeholder="地址"
+					   autocomplete="off" class="layui-input" maxlength="200">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="updateSubmit">立即提交</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
