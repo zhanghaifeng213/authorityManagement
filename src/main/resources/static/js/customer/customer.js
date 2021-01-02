@@ -1,10 +1,13 @@
 var table=layui.table;
-
 table.render({
     elem:'#customerList',
     url:'/customer/list',
     page:true, // 开启分页
     parseData:function(res){
+        console.log(res.code)
+        console.log(res.msg)
+        console.log(res.data.count)
+        console.log(res.data.records)
         return {
             "code":res.code,
             "msg":res.msg,
@@ -21,3 +24,4 @@ table.render({
         {title:'操作',toolbar:'#barDemo'}
     ]]
 })
+
