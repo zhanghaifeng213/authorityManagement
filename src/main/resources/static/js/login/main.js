@@ -10,7 +10,7 @@ function showTab(url,name,id){
     if(length==0){
         let fullUrl="/"+url;
         let height=$(window).height() - 185;
-        let content='<iframe style="width:100%";height:'+height+'px" src="'+fullUrl+'" frameborder="0" scrolling="no">'
+        let content='<iframe style="width:100%;height:'+height+'px" src="'+fullUrl+'" frameborder="0" scrolling="no">'
         element.tabAdd('menu',{
             title: name,
             content: content,

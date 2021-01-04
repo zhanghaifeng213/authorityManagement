@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 	<link rel="stylesheet" th:href="@{/webjars/layui/css/layui.css}">
+
 </head>
 <body>
 
@@ -33,16 +34,20 @@
 
 	<button class="layui-btn">增加</button>
 
-	<table id="customerList" class="layui-table" lay-even lay-skin="nob"></table>
+
+	<table id="demo" lay-filter="test"></table>
+
 
 	<script th:src="@{/webjars/jquery/jquery.js}"></script>
 	<script th:src="@{/webjars/layui/layui.all.js}"></script>
 	<script th:src="@{/js/customer/customer.js}"></script>
 
-	<script type="text/html" id="barDemo">
+	<script type="text/html" id="bardemo">
   		<a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
  		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
+
 </body>
+
 </html>
