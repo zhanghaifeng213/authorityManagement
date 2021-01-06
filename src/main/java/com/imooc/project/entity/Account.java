@@ -1,6 +1,7 @@
 package com.imooc.project.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.imooc.project.entity.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
@@ -30,6 +31,11 @@ public class Account extends BaseEntity {
      * 角色id
      */
     private Long roleId;
+    /**
+     * 角色名称
+     */
+    @TableField(exist = false)
+    private String roleName;
 
     /**
      * 用户名

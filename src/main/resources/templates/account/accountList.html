@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 	<link rel="stylesheet" th:href="@{/webjars/layui/css/layui.css}">
-
 </head>
 <body>
 
@@ -11,16 +10,23 @@
 
 		<div class="layui-inline">
 			<label class="layui-form-label">真实姓名</label>
-			<div class="layui-input-inline" style="width: 150px;">
+			<div class="layui-input-inline" style="width: 200px;">
 				<input type="text" id="realName" autocomplete="off" class="layui-input">
 			</div>
 		</div>
 
 		<div class="layui-inline">
-			<label class="layui-form-label">手机号码</label>
-			<div class="layui-input-inline" style="width: 150px;">
-				<input type="text" id="phone" autocomplete="off"
+			<label class="layui-form-label">邮箱</label>
+			<div class="layui-input-inline" style="width: 200px;">
+				<input type="text" id="email" autocomplete="off"
 					class="layui-input">
+			</div>
+		</div>
+
+		<div class="layui-inline">
+			<label class="layui-form-label">创建时间</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input" id="createTimeRange" placeholder=" - ">
 			</div>
 		</div>
 
@@ -34,21 +40,20 @@
 
 	<button class="layui-btn" onclick="toAdd()">增加</button>
 
+	<table id="accountList" lay-filter="test"></table>
 
-	<table id="demo" lay-filter="test"></table>
-
+<!--	<script src="../jquery/jquery.js"></script>-->
+<!--	<script src="../layui/layui.all.js"></script>-->
 
 	<script th:src="@{/webjars/jquery/jquery.js}"></script>
 	<script th:src="@{/webjars/layui/layui.all.js}"></script>
 	<script th:src="@{/js/common.js}"></script>
-	<script th:src="@{/js/customer/customer.js}"></script>
+	<script th:src="@{/js/account/account.js}"></script>
 
 	<script type="text/html" id="barDemo">
   		<a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
  		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
-
 </body>
-
 </html>

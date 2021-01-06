@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" th:href="@{/webjars/layui/css/layui.css}">
+<!--	<link rel="stylesheet" th:href="@{/webjars/layui/css/layui.css}">-->
 </head>
 <body>
 	<form class="layui-form"  id="addForm"
-		method="post">
+		method="post" th:action="@{/customer}">
 		<div class="layui-form-item">
 			<label class="layui-form-label">真实姓名</label>
 			<div class="layui-input-block">
