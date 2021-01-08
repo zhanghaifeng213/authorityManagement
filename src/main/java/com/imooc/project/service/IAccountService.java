@@ -17,7 +17,7 @@ import org.apache.ibatis.annotations.Param;
  * @author zhf
  * @since 2021-01-02
  */
-public interface IAccountService extends IService<Account> {
+public interface IAccountService extends IMyService<Account> {
     LoginDTO login(String username, String password);
     IPage<Account> accountPage(Page<Account> page, Wrapper<Account> wrapper);
     Account getAccountById(Long id);

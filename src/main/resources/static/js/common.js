@@ -22,8 +22,11 @@ function openLayer(url,title){
  * @param filter
  * @param type
  */
-function mySubmit(filter,type){
+function mySubmit(filter,type,func){
     layui.form.on('submit('+filter+')',function(data){
+        if(typeof (func)!='undefined'){
+            func(data.field);
+        }
         $.ajax({
             url: data.form.action,
             async:false,
@@ -61,4 +64,17 @@ function myDelete(url){
             }
         }
     })
+}
+
+var addIds=function(field){
+    let checkedData = layui.tree.getChecked('resource');
+    field.resourceIds=getIds(checkedData,[])
+}
+
+function getIds(checkedData,arr){
+    for(let i in checkedData){
+        arr.push(checkedData[i].id);
+        arr=getIds(checkedData[i].children,arr)
+    }
+    return arr;
 }

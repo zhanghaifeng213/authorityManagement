@@ -11,4 +11,14 @@
         on re.resource_id = rr.resource_id
         ${ew.customSqlSegment}
     </select>
+    <select id="listResourceByRoleId" resultType="com.imooc.project.vo.TreeVO">
+        select
+        re.resource_id id,
+        re.resource_name title,
+        re.url,
+        if(rr.resource_id is null,false,true) checked
+        from resource re left join role_resource rr
+        on re.resource_id = rr.resource_id and rr.role_id=#{roleId}
+        ${ew.customSqlSegment}
+    </select>
 </mapper>

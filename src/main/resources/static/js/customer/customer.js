@@ -65,8 +65,8 @@
 function query(){
     tableIns.reload({
         where:{
-            realName:$("#realName").val(),
-            phone:$("#phone").val()
+            like$real_name:$("#realName").val(),
+            like$phone:$("#phone").val()
         },
         page:{
             curr:1

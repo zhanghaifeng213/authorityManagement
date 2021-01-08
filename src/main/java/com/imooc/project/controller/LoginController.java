@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -37,6 +38,10 @@ public class LoginController {
             session.setAttribute("account",loginDTO.getAccount());
             List<ResourceVO> resourceVOS= resourceService.listResourceByRoleId(loginDTO.getAccount().getRoleId());
             model.addAttribute("resources",resourceVOS);
+
+            // 将资源转换为代码模块名称的集合
+            HashSet<String> module = resourceService.convert(resourceVOS);
+            session.setAttribute("module",module);
         }else{
             attributes.addFlashAttribute("error",error);
         }

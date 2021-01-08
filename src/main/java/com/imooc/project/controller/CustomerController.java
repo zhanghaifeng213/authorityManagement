@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.imooc.project.entity.Customer;
 import com.imooc.project.service.ICustomerService;
+import com.imooc.project.util.MyQuery;
+import com.imooc.project.util.QueryUtil;
 import com.imooc.project.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -42,20 +44,19 @@ public class CustomerController {
 
     /**
      * 查询方法
-     * @param realName
-     * @param phone
-     * @param page
-     * @param limit
      * @return
      */
     @GetMapping("list")
     @ResponseBody
-    public R<Map<String,Object>> list(String realName,String phone,Long page,Long limit){
-        LambdaQueryWrapper<Customer> wrapper = Wrappers.<Customer>lambdaQuery()
-                .like(StringUtils.isNotBlank(realName),Customer::getRealName,realName)
-                .like(StringUtils.isNotBlank(phone),Customer::getPhone,phone)
-                .orderByDesc(Customer::getCustomerId);
-        Page<Customer> myPage = customerService.page(new Page<>(page, limit), wrapper);
+    public R<Map<String,Object>> list(@RequestParam Map<String,String> param){
+        MyQuery<Customer> myQuery = QueryUtil.buildMyQuery(param);
+//        LambdaQueryWrapper<Customer> wrapper = Wrappers.<Customer>lambdaQuery()
+//                .like(StringUtils.isNotBlank(realName),Customer::getRealName,realName)
+//                .like(StringUtils.isNotBlank(phone),Customer::getPhone,phone)
+//                .orderByDesc(Customer::getCustomerId);
+//        Page<Customer> myPage = customerService.page(new Page<>(page, limit), wrapper);
+        Page<Customer> myPage = customerService.page(myQuery.getPage(),
+                myQuery.getWrapper().orderByDesc("customer_id"));
 //        HashMap<String,Object> data=new HashMap<>();
 //        data.put("count",myPage.getTotal());
 //        data.put("records",myPage.getRecords());
@@ -120,7 +121,9 @@ public class CustomerController {
     @DeleteMapping("/{id}")
     @ResponseBody
     public R<Object> delete(@PathVariable Long id){
-        boolean success=customerService.removeById(id);
+        Customer customer=new Customer();
+        customer.setCustomerId(id);
+        boolean success=customerService.removeByIdWithFill(customer);
         return ResultUtil.buildR(success);
     }
 
